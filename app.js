@@ -63,13 +63,14 @@ app.post('/todos', (req, res) => {
 app.put('/todos/:id', (req, res) => {
   const body = req.body
   const id = req.params.id
-
   return Todo.update({ name: body.name }, { where: { id } })
     .then(() => { res.redirect(`/todos/${id}`) })
 })
 
 app.delete('/todos/:id', (req, res) => {
-  res.send(`delete todo : ${req.params.id}`)
+  const id = req.params.id
+  return Todo.destroy({ where: { id } })
+    .then(() => { res.redirect('/todos') })
 })
 
 app.listen(port, () => {
