@@ -1,3 +1,7 @@
+{{#if error}}
+<div>{{error}}</div>
+{{/if}}
+
 <form action="/todos" method="post">
   <input type="text" placeholder="todo's name" name="name">
   <button type="submit">Create</button>
