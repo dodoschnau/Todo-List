@@ -3,6 +3,8 @@ const { engine } = require('express-handlebars')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
 const session = require('express-session')
+const messageHandler = require('./middlewares/message-handler')
+const errorHandler = require('./middlewares/error-handler')
 
 const app = express()
 
@@ -26,7 +28,11 @@ app.use(session({
 }))
 app.use(flash())
 
+app.use(messageHandler)
+
 app.use(router)
+
+app.use(errorHandler)
 
 
 
