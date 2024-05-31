@@ -8,6 +8,11 @@ const errorHandler = require('./middlewares/error-handler')
 
 const app = express()
 
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config()
+}
+console.log(process.env.SESSION_SECRET)
+
 const port = 3000
 
 const { raw } = require('mysql2')
@@ -22,7 +27,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
 app.use(session({
-  secret: 'ThisIsSecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }))
