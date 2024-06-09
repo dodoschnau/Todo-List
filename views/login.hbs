@@ -1,0 +1,27 @@
+<h2>Login</h2>
+
+<form action="/login" method="POST">
+
+  <div>
+    <div>
+      <label for="loginInputEmail" class="form-label">Email</label>
+    </div>
+    <input type="email" class="form-control" id="loginInputEmail" placeholder="Enter Email" name="email" required>
+  </div>
+
+  <div>
+    <div>
+      <label for="loginInputPassword" class="form-label">Password</label>
+    </div>
+    <input type="password" class="form-control" id="loginInputPassword" placeholder="Enter Password" name="password"
+      required>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Login</button>
+
+</form>
+
+<div>
+  <span>No account?</span>
+  <a href="/users/register">Register</a>
+</div>

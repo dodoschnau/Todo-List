@@ -1,0 +1,41 @@
+<h2>Register</h2>
+
+<form action="/users" method="POST">
+
+  <div>
+    <div>
+      <label for="inputName" class="form-label">Name</label>
+    </div>
+    <input type="text" class="form-control" id="inputName" name="userName" placeholder="Enter Username">
+  </div>
+
+  <div>
+    <div>
+      <label for="inputEmail" class="form-label">Email address</label>
+    </div>
+    <input type="email" class="form-control" id="inputEmail" placeholder="Enter Email" name="email" required>
+  </div>
+
+  <div>
+    <div>
+      <label for="inputPassword" class="form-label">Password</label>
+    </div>
+    <input type="password" class="form-control" id="inputPassword" placeholder="Enter Password" name="password"
+      required>
+  </div>
+
+  <div>
+    <div>
+      <label for="inputPasswordConfirm" class="form-label">Confirm Password</label>
+    </div>
+    <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Confirm Password"
+      name="confirmPassword" required>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+<div>
+  <span>Already have an account?</span>
+  <a href="/users/login">Login</a>
+</div>
