@@ -13,16 +13,50 @@ router.get('/login', (req, res) => {
   return res.render('login')
 })
 
-router.post('/', (req, res) => {
-  res.send(req.body)
+// register
+router.post('/', (req, res, next) => {
+  const { userName, email, password, confirmPassword } = req.body
+
+  if (!email || !password) {
+    req.flash('error', 'email及password為必填！')
+    return res.redirect('back')
+  }
+
+  if (password !== confirmPassword) {
+    req.flash('error', '密碼與驗證密碼不相符！')
+    return res.redirect('back')
+  }
+
+  return User.count({ where: { email } })
+    .then((rowCount) => {
+      if (rowCount > 0) {
+        req.flash('error', '該email已被註冊！')
+        return
+      }
+      return User.create({ userName, email, password })
+    })
+    .then((user) => {
+      // when creating user failed
+      if (!user) {
+        return res.redirect('back')
+      }
+      req.flash('success', '註冊成功！')
+      return res.redirect('/users/login')
+    })
+    .catch((error) => {
+      error.errorMessage = '註冊失敗:('
+      next(error)
+    })
 })
 
+// login
 router.post('/login', (req, res) => {
-  res.send(req.body)
+  return res.send(req.body)
 })
 
+// logout
 router.post('/logout', (req, res) => {
-  res.send('logout')
+  return res.send('logout')
 })
 
 
