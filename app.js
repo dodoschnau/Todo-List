@@ -5,6 +5,7 @@ const flash = require('connect-flash')
 const session = require('express-session')
 const messageHandler = require('./middlewares/message-handler')
 const errorHandler = require('./middlewares/error-handler')
+const passport = require('passport')
 
 const app = express()
 
@@ -32,6 +33,8 @@ app.use(session({
   saveUninitialized: false
 }))
 app.use(flash())
+
+app.use(passport.initialize())
 
 app.use(messageHandler)
 

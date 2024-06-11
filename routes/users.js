@@ -5,14 +5,6 @@ const db = require('../models')
 const User = db.User
 
 
-router.get('/register', (req, res) => {
-  return res.render('register')
-})
-
-router.get('/login', (req, res) => {
-  return res.render('login')
-})
-
 // register
 router.post('/', (req, res, next) => {
   const { userName, email, password, confirmPassword } = req.body
@@ -41,23 +33,12 @@ router.post('/', (req, res, next) => {
         return res.redirect('back')
       }
       req.flash('success', '註冊成功！')
-      return res.redirect('/users/login')
+      return res.redirect('/login')
     })
     .catch((error) => {
       error.errorMessage = '註冊失敗:('
       next(error)
     })
 })
-
-// login
-router.post('/login', (req, res) => {
-  return res.send(req.body)
-})
-
-// logout
-router.post('/logout', (req, res) => {
-  return res.send('logout')
-})
-
 
 module.exports = router
