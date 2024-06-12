@@ -8,7 +8,6 @@ const Todo = db.Todo
 router.get('/', (req, res, next) => {
   const page = parseInt(req.query.page) || 1
   const limit = 10
-  console.log(req.query)
   return Todo.findAll({
     attributes: [`id`, `name`, `isComplete`],
     offset: (page - 1) * limit,
