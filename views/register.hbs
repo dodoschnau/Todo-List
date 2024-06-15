@@ -32,9 +32,16 @@
       name="confirmPassword">
   </div>
 
+  {{!-- Register Button --}}
   <button type="submit" class="btn btn-primary">Register</button>
 </form>
 
+{{!-- Facebook Login Button --}}
+<form action="/login/facebook" method="GET">
+  <button type="submit">Facebook Login</button>
+</form>
+
+{{!-- Login Button --}}
 <div>
   <span>Already have an account?</span>
   <a href="/login">Login</a>
