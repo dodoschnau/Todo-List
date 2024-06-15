@@ -6,7 +6,6 @@ const User = db.User
 
 const bcrypt = require('bcryptjs')
 
-
 // register
 router.post('/', (req, res, next) => {
   const { userName, email, password, confirmPassword } = req.body

@@ -1,11 +1,7 @@
 const express = require('express')
 const { engine } = require('express-handlebars')
-const methodOverride = require('method-override')
 const flash = require('connect-flash')
 const session = require('express-session')
-const messageHandler = require('./middlewares/message-handler')
-const errorHandler = require('./middlewares/error-handler')
-const passport = require('passport')
 
 const app = express()
 
@@ -14,7 +10,14 @@ if (process.env.NODE_ENV === 'development') {
 }
 console.log(process.env.SESSION_SECRET)
 
+const methodOverride = require('method-override')
+
+const messageHandler = require('./middlewares/message-handler')
+const errorHandler = require('./middlewares/error-handler')
+
 const port = 3000
+
+const passport = require('./config/passport')
 
 const { raw } = require('mysql2')
 const router = require('./routes')
